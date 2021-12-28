@@ -197,7 +197,7 @@ class SeqRoIHeads(RoIHeads):
 
         if self.training:
             boxes = self.get_boxes(proposal_regs, proposals, image_shapes)
-            boxes = [boxes_per_image.detach() for boxes_per_image in boxes]
+            boxes = [boxes_per_image.detach() for boxes_per_image in boxes] #detach截断操作****
             boxes, _, box_pid_labels, box_reg_targets = self.select_training_samples(boxes, targets)
         else:
             # invoke the postprocess method inherited from parent class to process proposals
